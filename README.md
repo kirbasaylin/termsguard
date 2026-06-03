@@ -1,12 +1,24 @@
- Terms Guard — *Before You Sign Up*
+# Terms Guard — Before You Sign Up
 
-A Chrome (Manifest V3) extension that catches the fine print **at the moment you're about to commit**. When you land on a trial, subscription, signup, or checkout page, Terms Guard quietly scans the page *and the linked Terms / Privacy / Refund / Cancellation pages*, then tells you the gotchas in plain English:
+Terms Guard is a local-first Chrome extension that warns users about risky signup, trial, subscription, and checkout terms before they commit.
 
-> **This signup has 8 things to check:**
-> Auto-renews after the 7-day trial · Cannot cancel online — must call · You'd give up the right to join a class action · No refunds / all sales final · Restocking fee applies …
+It scans the current page plus linked Terms, Privacy, Refund, Billing, and Cancellation pages, then surfaces issues like auto-renewal, refund limits, hard-to-cancel subscriptions, arbitration clauses, intro price jumps, data sharing, and hidden fees in plain English.
 
-Each item shows **where it came from** ("from Terms", "from Refund policy") and a "show where" button that reveals the exact sentence.
+> Example: 5 things to check  
+> Auto-renews after the trial · No refunds / all sales final · Must call to cancel · Class-action waiver · Price increases after intro period
 
+## Why I Built This
+
+People agree to contracts they do not have time to read. Terms Guard gives users a second set of eyes at the exact moment they are about to start a trial, subscribe, or pay.
+
+## Features
+
+- Detects signup, checkout, trial, subscription, billing, and payment pages
+- Scans linked legal pages, not just the visible checkout page
+- Flags concrete risks with source attribution
+- Shows the exact sentence behind each warning
+- Sets optional local cancel reminders before trial renewal
+- Runs without a backend; page content is not uploaded or shared
 ## Tech Stack
 - **Chrome Extension (Manifest V3)** — service worker architecture, no persistent background page.
 - **Vanilla JavaScript (ES6+)** — no framework or build step; the extension runs the source files directly.
