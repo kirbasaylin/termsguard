@@ -1,11 +1,19 @@
-# Terms Guard — *Before You Sign Up*
+ Terms Guard — *Before You Sign Up*
 
 A Chrome (Manifest V3) extension that catches the fine print **at the moment you're about to commit**. When you land on a trial, subscription, signup, or checkout page, Terms Guard quietly scans the page *and the linked Terms / Privacy / Refund / Cancellation pages*, then tells you the gotchas in plain English:
 
 > **This signup has 8 things to check:**
-> 🔁 Auto-renews after the 7-day trial · 🚪 Cannot cancel online — must call · ⚖️ You'd give up the right to join a class action · ↩️ No refunds / all sales final · 💸 Restocking fee applies …
+> Auto-renews after the 7-day trial · Cannot cancel online — must call · You'd give up the right to join a class action · No refunds / all sales final · Restocking fee applies …
 
 Each item shows **where it came from** ("from Terms", "from Refund policy") and a "show where" button that reveals the exact sentence.
+
+## Tech Stack
+- **Chrome Extension (Manifest V3)** — service worker architecture, no persistent background page.
+- **Vanilla JavaScript (ES6+)** — no framework or build step; the extension runs the source files directly.
+- **HTML5 / CSS3** — popup UI (`popup.html`, `popup.css`), no UI library.
+- **Chrome Extension APIs** — `storage` (settings, reminders, doc cache), `alarms` (renewal reminders), `notifications` (browser alerts), and `host_permissions` for cross-origin fetching of linked legal pages.
+- **Regex-based detection engine** — custom rule dictionaries with negation handling and specifics extraction (`detectors.js`).
+- **No external dependencies / no network calls** — all page analysis happens locally in the browser.
 
 ## What it catches
 Auto-renewal · free-trial-to-paid conversion · hard-to-cancel terms (call/mail/notice-period) · refund limits & windows · binding arbitration / class-action waivers · price jumps after an intro period · data sharing/selling · minimum commitments & early-termination fees · restocking/handling fees · final-sale & return-shipping conditions.
